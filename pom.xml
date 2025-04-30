@@ -178,6 +178,26 @@
                     </webApp>
                 </configuration>
             </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.1.2</version>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <configLocation>google_checks.xml</configLocation> <!-- o custom si ya tienes uno -->
+                        <encoding>UTF-8</encoding>
+                        <consoleOutput>true</consoleOutput>
+                        <failOnViolation>false</failOnViolation> <!-- puedes poner true si deseas que falle el build -->
+                        <outputFile>target/checkstyle-result.xml</outputFile>
+                    </configuration>
+                </plugin>
 		<!-- CODE COVERAGE -->
 	            <plugin>
                      <groupId>org.apache.maven.plugins</groupId>
