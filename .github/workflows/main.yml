@@ -115,7 +115,10 @@ jobs:
           name: vprofile-stack
       
       - name: Helm dry-run (optional)
-        run: helm upgrade --install vprofile ./helm/vprofilecharts --dry-run --debug \
-          --namespace default \
-          --set image.repository=${{ secrets.REGISTRY }}/${{ env.ECR_REPOSITORY }} \
-          --set image.tag=${{ github.run_number }}
+        run: |
+          helm upgrade --install vprofile ./helm/vprofilecharts \
+            --dry-run --debug \
+            --namespace default \
+            --set image.repository=${{ secrets.REGISTRY }}/${{ env.ECR_REPOSITORY }} \
+            --set image.tag=${{ github.run_number }}
+
